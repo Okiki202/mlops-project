@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Linting code with flake8"
+      - flake8 .
+
+  build:
+    commands:
+      - echo "Running tests with pytest"
+      - pytest
+
+artifacts:
+  files:
+    - '**/*'
